@@ -1,0 +1,10 @@
+#!/bin/bash
+function sum_from_1_to_n {
+    n=$1
+    sum=0
+    for ((i=1; i<=n; i++)); do
+        sum=$((sum + i))
+    done
+    echo $sum
+}
+#TESTCASE: sum_from_1_to_n 5

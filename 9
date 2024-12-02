@@ -1,0 +1,14 @@
+#!/bin/bash
+function convert_to_lc {
+    dir=$1
+    tmp_file=.tmp
+    ls $dir > $tmp_file
+    file_count=`grep -c . $tmp_file`
+    for ((i=1; i<=file_count; i++)); do
+        file=`head -$i $tmp_file | tail -1`
+        file_lc=`echo $file | tr [A-Z] [a-z]`
+        mv -n $dir/$file $dir/$file_lc
+    done
+    rm $tmp_file
+}
+#TESTCASE: convert_to_lc ~/Desktop/new1

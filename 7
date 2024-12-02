@@ -1,0 +1,17 @@
+#!/bin/bash
+function rm_duplicate_lines {
+    file=$1
+    tmp_file=.tmp
+    touch $tmp_file
+    lines_count=`grep -c . $file`
+    for ((i=1; i<=lines_count; i++)); do
+        line=`head -$i $file | tail -1`
+        line_freq=`grep -xc "$line" $tmp_file`
+        if ((line_freq == 0)); then
+            echo $line >> $tmp_file
+        fi
+    done
+    cat $tmp_file > $file
+    rm $tmp_file
+}
+#TESTCASE: rm_duplicate_lines test_7

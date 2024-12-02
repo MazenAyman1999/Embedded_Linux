@@ -1,0 +1,7 @@
+#!/bin/bash
+function search {
+    word=$1
+    file=$2
+    grep -wo $word $file | grep -c $word
+}
+#TESTCASE: search hello test_3
